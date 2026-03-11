@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareNest - Nannies & Cleaning Services | Safe Care. Spotless Homes.</title>
+    <meta name="description" content="Professional nanny and cleaning services. Trusted childcare and home cleaning solutions for your family.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        carenest: {
+                            teal: '#0D7377',
+                            tealLight: '#14919b',
+                            tealDark: '#0a5c5f',
+                            gold: '#C9A227',
+                            goldLight: '#d4b43a',
+                            goldDark: '#a88820',
+                            cream: '#FDFBF7',
+                            softGray: '#F5F5F5'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0D7377 0%, #C9A227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(13, 115, 119, 0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -15px rgba(13, 115, 119, 0.3);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #C9A227;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .blob-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-carenest-cream overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center overflow-hidden">
+                        <img src="/mnt/kimi/upload/WhatsApp Image 2026-03-11 at 11.34.17.jpeg" alt="CareNest Logo" class="w-10 h-10 object-contain">
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="font-serif text-2xl font-bold text-carenest-teal">CareNest</h1>
+                        <p class="text-xs text-carenest-gold font-medium tracking-wider">NANNIES & CLEANING</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-carenest-teal font-medium transition-colors">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-carenest-teal font-medium transition-colors">Services</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-carenest-teal font-medium transition-colors">About</a>
+                    <a href="#why-us" class="nav-link text-gray-700 hover:text-carenest-teal font-medium transition-colors">Why Us</a>
+                    <a href="#contact" class="bg-carenest-teal text-white px-6 py-2.5 rounded-full font-medium hover:bg-carenest-tealDark transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-carenest-teal focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full top-full left-0 border-t border-gray-100">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-carenest-teal font-medium py-2">Home</a>
+                <a href="#services" class="block text-gray-700 hover:text-carenest-teal font-medium py-2">Services</a>
+                <a href="#about" class="block text-gray-700 hover:text-carenest-teal font-medium py-2">About</a>
+                <a href="#why-us" class="block text-gray-700 hover:text-carenest-teal font-medium py-2">Why Us</a>
+                <a href="#contact" class="block bg-carenest-teal text-white px-6 py-3 rounded-full font-medium text-center mt-4">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-pattern">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-carenest-teal/10 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-carenest-gold/10 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-8 animate-fade-in-up">
+                    <div class="inline-flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-carenest-teal/20">
+                        <span class="w-2 h-2 bg-carenest-gold rounded-full animate-pulse"></span>
+                        <span class="text-sm font-medium text-carenest-teal">Trusted by 500+ Families</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl lg:text-7xl font-bold leading-tight text-gray-900">
+                        Your Family Deserves <span class="text-gradient">The Best Care</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+                        Professional nanny and cleaning services tailored to your family's unique needs. Because at CareNest, we believe every home deserves safe care and spotless comfort.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex items-center justify-center bg-carenest-teal text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-carenest-tealDark transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl group">
+                            Book a Service
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center bg-white text-carenest-teal border-2 border-carenest-teal px-8 py-4 rounded-full font-semibold text-lg hover:bg-carenest-teal/5 transition-all">
+                            Our Services
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="flex items-center space-x-8 pt-4">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-carenest-teal">500+</p>
+                            <p class="text-sm text-gray-600">Happy Families</p>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-carenest-teal">100%</p>
+                            <p class="text-sm text-gray-600">Vetted Staff</p>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-carenest-teal">24/7</p>
+                            <p class="text-sm text-gray-600">Support</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image/Illustration -->
+                <div class="relative lg:h-[600px] flex items-center justify-center animate-slide-in-right">
+                    <div class="blob-shape absolute w-full h-full bg-gradient-to-br from-carenest-teal/20 to-carenest-gold/20 -z-10"></div>
+                    <img src="/mnt/kimi/upload/WhatsApp Image 2026-03-11 at 11.34.17.jpeg" alt="CareNest Services" class="relative z-10 w-full max-w-md drop-shadow-2xl animate-float rounded-3xl">
+                    
+                    <!-- Floating Cards -->
+                    <div class="absolute top-10 -left-4 bg-white p-4 rounded-2xl shadow-xl animate-float" style="animation-delay: 1s;">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-carenest-gold/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-carenest-gold"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">Fully Insured</p>
+                                <p class="text-xs text-gray-500">Peace of mind</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-20 -right-4 bg-white p-4 rounded-2xl shadow-xl animate-float" style="animation-delay: 2s;">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-carenest-teal/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-star text-carenest-teal"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">5-Star Rated</p>
+                                <p class="text-xs text-gray-500">Quality service</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#services" class="text-carenest-teal/60 hover:text-carenest-teal transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-carenest-gold font-semibold tracking-wider uppercase text-sm">What We Offer</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-6">Comprehensive Care Solutions</h2>
+                <p class="text-gray-600 text-lg">From professional childcare to immaculate home cleaning, we provide services that let you focus on what matters most - your family.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Nanny Service 1 -->
+                <div class="service-card bg-carenest-cream rounded-3xl p-8 border border-gray-100 reveal group">
+                    <div class="w-16 h-16 bg-carenest-teal/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-carenest-teal group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-home text-2xl text-carenest-teal group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Live-in Nannies</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Full-time childcare professionals who become part of your family, providing round-the-clock care and support for your children in the comfort of your home.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> 24/7 availability</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Meal preparation</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Educational activities</li>
+                    </ul>
+                    <button onclick="openBooking('Live-in Nanny')" class="text-carenest-teal font-semibold hover:text-carenest-gold transition-colors flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Nanny Service 2 -->
+                <div class="service-card bg-carenest-cream rounded-3xl p-8 border border-gray-100 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-carenest-gold/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-carenest-gold group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-clock text-2xl text-carenest-gold group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Live-out Nannies</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Flexible daytime childcare solutions. Our professional nannies arrive in the morning and leave in the evening, perfect for working parents needing reliable day care.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> Flexible hours</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> School pickups</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> Homework help</li>
+                    </ul>
+                    <button onclick="openBooking('Live-out Nanny')" class="text-carenest-teal font-semibold hover:text-carenest-gold transition-colors flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Emergency Nannies -->
+                <div class="service-card bg-carenest-cream rounded-3xl p-8 border border-gray-100 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-first-aid text-2xl text-red-500 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Emergency Nannies</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Unexpected situation? Your regular nanny called in sick? We provide immediate temporary childcare solutions with our pool of on-call emergency nannies.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Same-day service</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Available 24/7</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> No long-term commitment</li>
+                    </ul>
+                    <button onclick="openBooking('Emergency Nanny')" class="text-carenest-teal font-semibold hover:text-carenest-gold transition-colors flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Cleaning Service 1 -->
+                <div class="service-card bg-carenest-cream rounded-3xl p-8 border border-gray-100 reveal group">
+                    <div class="w-16 h-16 bg-carenest-teal/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-carenest-teal group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-sparkles text-2xl text-carenest-teal group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Regular Cleaning</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Weekly or bi-weekly cleaning services to maintain your home's sparkle. Our trained cleaners ensure every corner of your home stays fresh and hygienic.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Dusting & vacuuming</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Kitchen & bathrooms</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-gold mr-2"></i> Eco-friendly products</li>
+                    </ul>
+                    <button onclick="openBooking('Regular Cleaning')" class="text-carenest-teal font-semibold hover:text-carenest-gold transition-colors flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Cleaning Service 2 -->
+                <div class="service-card bg-carenest-cream rounded-3xl p-8 border border-gray-100 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-carenest-gold/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-carenest-gold group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-broom text-2xl text-carenest-gold group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Deep Cleaning</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Intensive cleaning service for those times when your home needs extra attention. Perfect for spring cleaning, post-renovation, or preparing for special occasions.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> Behind appliances</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> Carpet shampooing</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-carenest-teal mr-2"></i> Window cleaning</li>
+                    </ul>
+                    <button onclick="openBooking('Deep Cleaning')" class="text-carenest-teal font-semibold hover:text-carenest-gold transition-colors flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Combo Package -->
+                <div class="service-card bg-gradient-to-br from-carenest-teal to-carenest-tealDark rounded-3xl p-8 text-white reveal group relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-gift text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Care & Clean Bundle</h3>
+                    <p class="text-carenest-cream/90 mb-6 leading-relaxed">The ultimate home care package. Combine nanny services with regular cleaning at a special discounted rate. Your complete home management solution.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm text-carenest-cream/90"><i class="fas fa-check text-carenest-gold mr-2"></i> 10% discount</li>
+                        <li class="flex items-center text-sm text-carenest-cream/90"><i class="fas fa-check text-carenest-gold mr-2"></i> Coordinated scheduling</li>
+                        <li class="flex items-center text-sm text-carenest-cream/90"><i class="fas fa-check text-carenest-gold mr-2"></i> Priority support</li>
+                    </ul>
+                    <button onclick="openBooking('Care & Clean Bundle')" class="bg-white text-carenest-teal font-semibold px-6 py-2 rounded-full hover:bg-carenest-gold hover:text-white transition-all flex items-center">
+                        Get Bundle <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-carenest-cream relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230D7377\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-carenest-teal to-carenest-gold rounded-3xl opacity-20 blur-2xl"></div>
+                    <img src="/mnt/kimi/upload/WhatsApp Image 2026-03-11 at 11.34.17.jpeg" alt="About CareNest" class="relative rounded-3xl shadow-2xl w-full">
+                    
+                    <!-- Experience Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <p class="text-4xl font-bold text-carenest-teal">10+</p>
+                        <p class="text-gray-600 font-medium">Years Experience</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <span class="text-carenest-gold font-semibold tracking-wider uppercase text-sm">About CareNest</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-gray-900">Creating Safe Spaces for Families to Thrive</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        CareNest was founded with a simple mission: to provide families with trustworthy, professional care services that give them peace of mind. We understand that inviting someone into your home to care for your children or handle your cleaning is a deeply personal decision.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        That's why we've built a rigorous vetting process that includes background checks, reference verification, skills assessment, and ongoing training. Every member of our team is not just an employee—they're a CareNest ambassador committed to excellence.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 bg-carenest-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user-check text-carenest-teal text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Rigorous Vetting</h4>
+                                <p class="text-sm text-gray-600">Background checked & verified</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 bg-carenest-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-graduation-cap text-carenest-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Trained Professionals</h4>
+                                <p class="text-sm text-gray-600">Continuous skill development</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center bg-carenest-teal text-white px-8 py-4 rounded-full font-semibold hover:bg-carenest-tealDark transition-all transform hover:scale-105 shadow-lg mt-4">
+                        Join Our Family <i class="fas fa-heart ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-carenest-gold font-semibold tracking-wider uppercase text-sm">Our Promise</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-6">Why Families Choose CareNest</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 reveal group">
+                    <div class="w-20 h-20 mx-auto bg-carenest-teal/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-carenest-teal group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-shield-alt text-3xl text-carenest-teal group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Fully Insured</h3>
+                    <p class="text-gray-600">Complete liability insurance coverage for your peace of mind and protection.</p>
+                </div>
+
+                <div class="text-center p-6 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto bg-carenest-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-carenest-gold group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-sync-alt text-3xl text-carenest-gold group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Replacement Guarantee</h3>
+                    <p class="text-gray-600">Not satisfied? We'll replace your nanny or cleaner immediately, no questions asked.</p>
+                </div>
+
+                <div class="text-center p-6 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto bg-carenest-teal/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-carenest-teal group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-headset text-3xl text-carenest-teal group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Our customer care team is always available to address your concerns and needs.</p>
+                </div>
+
+                <div class="text-center p-6 reveal group" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 mx-auto bg-carenest-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-carenest-gold group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-award text-3xl text-carenest-gold group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Quality Assured</h3>
+                    <p class="text-gray-600">Regular quality checks and feedback sessions to maintain our high standards.</p>
+                </div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="mt-20 bg-gradient-to-r from-carenest-teal to-carenest-tealDark rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden reveal">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+                
+                <div class="relative z-10 max-w-4xl mx-auto text-center">
+                    <i class="fas fa-quote-left text-4xl text-carenest-gold mb-6"></i>
+                    <p class="text-xl lg:text-2xl font-medium mb-8 leading-relaxed">
+                        "CareNest has been a blessing for our family. Our nanny Sarah is incredible with the kids, and coming home to a clean house twice a week is the best feeling. I finally have time to focus on my career without worrying about home management."
+                    </p>
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="w-12 h-12 bg-carenest-gold rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            J
+                        </div>
+                        <div class="text-left">
+                            <p class="font-bold">Jennifer M.</p>
+                            <p class="text-carenest-cream/80 text-sm">Working Mother of 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Team Section -->
+    <section class="py-24 bg-carenest-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden reveal">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <span class="text-carenest-gold font-semibold tracking-wider uppercase text-sm">Join Our Team</span>
+                        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-gray-900 mt-4 mb-6">Are You a Care Professional?</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            We're always looking for dedicated nannies and cleaners to join our growing family. Enjoy competitive pay, flexible schedules, and a supportive work environment.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-carenest-teal"></i>
+                                <span class="text-gray-700">Must be 18+ years with valid ID</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-carenest-teal"></i>
+                                <span class="text-gray-700">Clean criminal record required</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-carenest-teal"></i>
+                                <span class="text-gray-700">Previous experience preferred</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-check-circle text-carenest-teal"></i>
+                                <span class="text-gray-700">Willing to undergo medical checks</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openCareerModal()" class="inline-flex items-center justify-center bg-carenest-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-carenest-goldDark transition-all transform hover:scale-105 shadow-lg w-fit">
+                            Apply Now <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                    <div class="relative bg-carenest-teal/10 flex items-center justify-center p-8">
+                        <img src="/mnt/kimi/upload/WhatsApp Image 2026-03-11 at 11.34.17.jpeg" alt="Join Our Team" class="rounded-2xl shadow-lg max-w-xs w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <span class="text-carenest-gold font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-6">Ready to Experience Better Care?</h2>
+                    <p class="text-gray-600 text-lg mb-8">
+                        Contact us today for a free consultation. We'll discuss your needs and match you with the perfect care professional for your family.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-carenest-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-carenest-teal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Phone</h4>
+                                <p class="text-gray-600">+254 700 123 456</p>
+                                <p class="text-sm text-gray-500">Mon-Sun, 8am - 8pm</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-carenest-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-carenest-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Email</h4>
+                                <p class="text-gray-600">hello@carenest.co.ke</p>
+                                <p class="text-sm text-gray-500">We reply within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-carenest-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-carenest-teal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Location</h4>
+                                <p class="text-gray-600">Nairobi, Kenya</p>
+                                <p class="text-sm text-gray-500">Serving all neighborhoods</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-carenest-teal/10 rounded-full flex items-center justify-center text-carenest-teal hover:bg-carenest-teal hover:text-white transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-carenest-teal/10 rounded-full flex items-center justify-center text-carenest-teal hover:bg-carenest-teal hover:text-white transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-carenest-teal/10 rounded-full flex items-center justify-center text-carenest-teal hover:bg-carenest-teal hover:text-white transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-carenest-cream p-8 rounded-3xl reveal">
+                    <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all" placeholder="john@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all" placeholder="+254 700 000 000">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
+                            <select id="serviceSelect" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all">
+                                <option>Live-in Nanny</option>
+                                <option>Live-out Nanny</option>
+                                <option>Emergency Nanny</option>
+                                <option>Regular Cleaning</option>
+                                <option>Deep Cleaning</option>
+                                <option>Care & Clean Bundle</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none transition-all resize-none" placeholder="Tell us about your needs..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-carenest-teal text-white py-4 rounded-xl font-semibold hover:bg-carenest-tealDark transition-all transform hover:scale-[1.02] shadow-lg">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/mnt/kimi/upload/WhatsApp Image 2026-03-11 at 11.34.17.jpeg" alt="CareNest Logo" class="w-10 h-10 rounded-full">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold">CareNest</h3>
+                            <p class="text-xs text-carenest-gold">NANNIES & CLEANING SERVICES</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-sm">Safe Care. Spotless Homes. Your trusted partner in professional childcare and home cleaning services in Nairobi.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-carenest-gold transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-carenest-gold transition-colors">Services</a></li>
+                        <li><a href="#about" class="hover:text-carenest-gold transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-carenest-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-carenest-gold transition-colors">Live-in Nannies</a></li>
+                        <li><a href="#" class="hover:text-carenest-gold transition-colors">Live-out Nannies</a></li>
+                        <li><a href="#" class="hover:text-carenest-gold transition-colors">Emergency Care</a></li>
+                        <li><a href="#" class="hover:text-carenest-gold transition-colors">Home Cleaning</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; 2026 CareNest Nannies & Cleaning Services. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-carenest-gold text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-carenest-gold text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-4xl text-green-500"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
+            <p class="text-gray-600 mb-6">Thank you for contacting CareNest. We'll get back to you within 24 hours to discuss your needs.</p>
+            <button onclick="closeModal()" class="bg-carenest-teal text-white px-8 py-3 rounded-full font-semibold hover:bg-carenest-tealDark transition-all w-full">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Career Modal -->
+    <div id="careerModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full transform scale-95 opacity-0 transition-all duration-300" id="careerModalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-serif text-2xl font-bold text-gray-900">Join Our Team</h3>
+                <button onclick="closeCareerModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form onsubmit="handleCareerSubmit(event)" class="space-y-4">
+                <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+                <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+                    <option>Position: Nanny</option>
+                    <option>Position: Cleaner</option>
+                    <option>Position: Both</option>
+                </select>
+                <textarea placeholder="Tell us about your experience..." rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none resize-none"></textarea>
+                <button type="submit" class="w-full bg-carenest-gold text-white py-3 rounded-xl font-semibold hover:bg-carenest-goldDark transition-all">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-effect', 'shadow-md');
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('glass-effect', 'shadow-md', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Booking function
+        function openBooking(service) {
+            document.getElementById('serviceSelect').value = service;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form handling
+        function handleSubmit(e) {
+            e.preventDefault();
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            e.target.reset();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // Career modal
+        function openCareerModal() {
+            const modal = document.getElementById('careerModal');
+            const content = document.getElementById('careerModalContent');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeCareerModal() {
+            const modal = document.getElementById('careerModal');
+            const content = document.getElementById('careerModalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function handleCareerSubmit(e) {
+            e.preventDefault();
+            closeCareerModal();
+            setTimeout(() => {
+                alert('Thank you for your application! We will contact you soon.');
+            }, 300);
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const successModal = document.getElementById('successModal');
+            const careerModal = document.getElementById('careerModal');
+            if (event.target === successModal) closeModal();
+            if (event.target === careerModal) closeCareerModal();
+        }
+    </script>
+</body>
+</html>
