@@ -599,7 +599,7 @@
                 
                 <!-- Contact Form -->
                           
-  <form id="contactForm"
+ <form id="contactForm"
 action="https://script.google.com/macros/s/AKfycbwAK9Ak_Q_i9QON4lYj5-ap2bUUmp63kXAmmPgiMhat6LSJGBXhAcIiqPv0_JH2HsguVg/exec"
 method="POST"
 target="hidden_iframe"
@@ -607,34 +607,29 @@ class="space-y-6">
 
   <div class="grid md:grid-cols-2 gap-6">
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-      <input type="text" name="firstName" required placeholder="John"
-        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+      <label>First Name</label>
+      <input type="text" name="firstName" required class="w-full px-4 py-3 rounded-xl border">
     </div>
 
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-      <input type="text" name="lastName" required placeholder="Doe"
-        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+      <label>Last Name</label>
+      <input type="text" name="lastName" required class="w-full px-4 py-3 rounded-xl border">
     </div>
   </div>
 
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-    <input type="email" name="email" required placeholder="john@example.com"
-      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+    <label>Email</label>
+    <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border">
   </div>
 
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-    <input type="tel" name="phone" required placeholder="+254 700 000 000"
-      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+    <label>Phone</label>
+    <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl border">
   </div>
 
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
-    <select name="service"
-      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none">
+    <label>Service Interested In</label>
+    <select name="service" class="w-full px-4 py-3 rounded-xl border">
       <option>Live-in Nanny</option>
       <option>Live-out Nanny</option>
       <option>Emergency Nanny</option>
@@ -645,13 +640,12 @@ class="space-y-6">
   </div>
 
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-    <textarea name="message" rows="4" placeholder="Tell us about your needs..."
-      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-carenest-teal focus:ring-2 focus:ring-carenest-teal/20 outline-none resize-none"></textarea>
+    <label>Message</label>
+    <textarea name="message" class="w-full px-4 py-3 rounded-xl border"></textarea>
   </div>
 
   <button id="submitBtn" type="submit"
-    class="w-full bg-carenest-teal text-white py-4 rounded-xl font-semibold shadow-lg">
+    class="bg-green-700 text-white px-6 py-3 rounded-xl">
     Send Message
   </button>
 
@@ -659,19 +653,9 @@ class="space-y-6">
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-<!-- SUCCESS POPUP -->
-<div id="successPopup"
-  class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
-  <div class="bg-white p-8 rounded-2xl text-center shadow-xl">
-    <h2 class="text-xl font-bold mb-2">✅ Message Sent!</h2>
-    <p>We’ll contact you shortly.</p>
-  </div>
-</div>
-
 <script>
 const form = document.getElementById("contactForm");
 const btn = document.getElementById("submitBtn");
-const popup = document.getElementById("successPopup");
 
 form.addEventListener("submit", function () {
 
@@ -679,9 +663,9 @@ form.addEventListener("submit", function () {
   btn.innerText = "Sending...";
   btn.disabled = true;
 
-  // 📦 Collect data
   const data = new FormData(form);
 
+  // 📲 WhatsApp message
   const message =
 `New Client Inquiry:
 Name: ${data.get("firstName")} ${data.get("lastName")}
@@ -690,23 +674,19 @@ Email: ${data.get("email")}
 Service: ${data.get("service")}
 Message: ${data.get("message")}`;
 
-  // 📲 WhatsApp redirect
+  // ⏳ Delay slightly to allow form submission to Google Sheets
   setTimeout(() => {
     const url = "https://wa.me/254717945227?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
-  }, 1000);
 
-  // ✅ Show success popup
-  setTimeout(() => {
-    popup.classList.remove("hidden");
+    // Reset button + form
     btn.innerText = "Send Message";
     btn.disabled = false;
     form.reset();
-  }, 1500);
+  }, 1200);
 
 });
 </script>
-
 <!--
                 <div class="bg-carenest-cream p-8 rounded-3xl reveal">
                     <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
